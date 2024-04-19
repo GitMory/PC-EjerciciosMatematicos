@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números de Catalan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Calculadora de Números de Catalan</h1>
+        <div class="form-group">
+            <label for="cantidadInput">Ingrese la cantidad de números de Catalan a mostrar:</label>
+            <input type="number" class="form-control" id="cantidadInput" placeholder="Ingrese un número">
+        </div>
+        <button type="button" class="btn btn-primary mb-3" onclick="mostrarNumerosCatalan()">Mostrar</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularFactorial(numero) {
+            let factorial = 1;
+            for (let i = 2; i <= numero; i++) {
+                factorial *= i;
+            }
+            return factorial;
+        }
+
+        function numeroCatalan(n) {
+            return calcularFactorial(2 * n) / (calcularFactorial(n + 1) * calcularFactorial(n));
+        }
+
+        function mostrarNumerosCatalan() {
+            const cantidad = parseInt(document.getElementById("cantidadInput").value);
+            if (isNaN(cantidad) || cantidad <= 0) {
+                document.getElementById("resultado").innerHTML = '<div class="alert alert-danger" role="alert">Por favor ingrese un número válido mayor que cero.</div>';
+                return;
+            }
+
+            let numerosCatalan = [];
+            for (let i = 0; i < cantidad; i++) {
+                numerosCatalan.push(numeroCatalan(i));
+            }
+
+            document.getElementById("resultado").innerHTML = `
+    <div class="alert alert-success" role="alert">
+      Los primeros ${cantidad} números de Catalan son: ${numerosCatalan.join(', ')}
+    </div>
+  `;
+        }
+
+    </script>
+</body>
+
+</html>

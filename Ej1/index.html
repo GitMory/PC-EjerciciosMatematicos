@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Perfectos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Comprobador de Números Perfectos</h1>
+        <div class="form-group">
+            <label for="numeroInput">Ingrese un número:</label>
+            <input type="number" class="form-control" id="numeroInput" placeholder="Ingrese un número">
+        </div>
+        <button type="button" class="btn btn-primary mb-3" onclick="comprobarNumeroPerfecto()">Comprobar</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function esNumeroPerfecto(numero) {
+            let sumaDivisores = 0;
+            for (let i = 1; i < numero; i++) {
+                if (numero % i === 0) {
+                    sumaDivisores += i;
+                }
+            }
+            return sumaDivisores === numero;
+        }
+
+        function encontrarNumerosPerfectos(n) {
+            const numerosPerfectos = [];
+            let numero = 1;
+            while (numerosPerfectos.length < n) {
+                if (esNumeroPerfecto(numero)) {
+                    numerosPerfectos.push(numero);
+                }
+                numero++;
+            }
+            return numerosPerfectos;
+        }
+
+        function comprobarNumeroPerfecto() {
+            const numero = parseInt(document.getElementById("numeroInput").value);
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById("resultado").innerHTML = '<div class="alert alert-danger" role="alert">Por favor ingrese un número válido mayor que cero.</div>';
+                return;
+            }
+
+            if (esNumeroPerfecto(numero)) {
+                document.getElementById("resultado").innerHTML = '<div class="alert alert-success" role="alert">¡El número es perfecto!</div>';
+            } else {
+                document.getElementById("resultado").innerHTML = '<div class="alert alert-danger" role="alert">El número no es perfecto.</div>';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

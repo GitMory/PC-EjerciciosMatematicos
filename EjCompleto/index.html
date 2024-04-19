@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras Matemáticas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .redd{
+            /*color: white;
+            background-color: rgb(52, 63, 218);*/
+            border-radius: 10px;
+            border: 3px solid  black;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Calculadoras Matemáticas</h1>
+
+        <div class="mb-5 redd">
+            <h2>Número Perfecto</h2>
+            <div class="form-group">
+                <label for="numeroPerfectoInput">Ingrese un número:</label>
+                <input type="number" class="form-control" id="numeroPerfectoInput" placeholder="Ingrese un número">
+            </div>
+            <button type="button" class="btn btn-danger mb-3" onclick="comprobarNumeroPerfecto()">Comprobar</button>
+            <div id="resultadoNumeroPerfecto"></div>
+        </div>
+
+        <div class="mb-5 redd">
+            <h2>Números de Catalan</h2>
+            <div class="form-group">
+                <label for="cantidadCatalanInput">Ingrese la cantidad de números a mostrar:</label>
+                <input type="number" class="form-control" id="cantidadCatalanInput" placeholder="Ingrese un número">
+            </div>
+            <button type="button" class="btn btn-danger mb-3" onclick="mostrarNumerosCatalan()">Mostrar</button>
+            <div id="resultadoCatalan"></div>
+        </div>
+
+        <div class="mb-5 redd">
+            <h2>Suma de Comprobación</h2>
+            <div class="form-group">
+                <label for="palabraInput">Ingrese una palabra:</label>
+                <input type="text" class="form-control" id="palabraInput" placeholder="Ingrese una palabra">
+            </div>
+            <button type="button" class="btn btn-danger mb-3" onclick="calcularSumaComprobacion()">Calcular</button>
+            <div id="resultadoSumaComprobacion"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

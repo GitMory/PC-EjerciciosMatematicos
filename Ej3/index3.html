@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma de Comprobación</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Calculadora de Suma de Comprobación</h1>
+        <div class="form-group">
+            <label for="palabraInput">Ingrese una palabra:</label>
+            <input type="text" class="form-control" id="palabraInput" placeholder="Ingrese una palabra">
+        </div>
+        <button type="button" class="btn btn-primary mb-3" onclick="calcularSumaComprobacion()">Calcular</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularSumaComprobacion() {
+            const palabra = document.getElementById("palabraInput").value.toUpperCase();
+            const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let suma = 0;
+
+            for (let i = 0; i < palabra.length; i++) {
+                const letra = palabra[i];
+                const indice = letras.indexOf(letra);
+                if (indice !== -1) {
+                    suma += (indice + 1) * (i + 1);
+                }
+            }
+
+            document.getElementById("resultado").innerHTML = `
+    <div class="alert alert-success" role="alert">
+      La suma de comprobación de la palabra "${palabra}" es: ${suma}
+    </div>
+  `;
+        }
+
+    </script>
+</body>
+
+</html>
